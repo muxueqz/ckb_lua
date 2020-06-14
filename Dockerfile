@@ -5,9 +5,10 @@ ADD http://www.lua.org/ftp/lua-5.1.5.tar.gz /opt/lua.tar.gz
 
 # Build Lua VM
 RUN mkdir -pv /opt/workdir && \
- tar xvf /opt/lua.tar.xz -C /opt/workdir/ && \
+ tar xvf /opt/lua.tar.gz -C /opt/workdir/ && \
  cd /opt/workdir/lua-* && \
- make generic CC=riscv64-unknown-elf-gcc -j3 install
+ make generic CC=riscv64-unknown-elf-gcc -j3 && \
+ make install && \
  rm -rf /opt/lua.tar.xz /opt/workdir
 
 WORKDIR /app
